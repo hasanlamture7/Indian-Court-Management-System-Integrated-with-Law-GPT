@@ -1,0 +1,755 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+<!-- <link rel="stylesheet1" href="script.js" /> -->
+        <!-- <div class="container-fluid">
+          <a class="navbar-brand" href="/">L.L.B Mitra </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="case" >case</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active " aria-current="page" href="allcases" >All case</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active " aria-current="page" href="lawers.html" >Lawyers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active " aria-current="page" href="court"> Court </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">`
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li> 
+               <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            
+            <li class="nav-item dropdown">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav> -->
+      <!-- <div class="container my-3">
+
+        <h2>Add a todo</h2>
+        <form action="/" method="POST">
+            <div class="mb-3">
+              <label for="title" class="form-label">Todo Title</label>
+              <input type="text" class="form-control" name="title" id="title" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="desc" class="form-label">Todo Description</label>
+              <input type="text" class="form-control" name="desc" id="desc">
+            </div>
+            <button type="submit" class="btn btn-primary btn-dark" >Submit</button>
+          </form>
+      </div>
+      <div class="container my-3">
+        <h2>Your Todo</h2>
+        <table class="table">
+            <thead>
+              {% if allTodo|length==0  %}
+              <div class="alert alert-dark" role="alert">
+                No Todo Listed!Please Enter your todos
+              </div>
+              {% else %}
+              <tr>
+                <th scope="col">SNo</th>
+                <th scope="col">Title </th>
+                <th scope="col">Description</th>
+                <th scope="col">Time</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for todo in allTodo %}
+              <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{todo.title}}</td>
+                <td>{{todo.desc}}</td>
+                <td>{{todo.date_created}}</td>
+                <td>
+                  <a href="/update/{{todo.sno}}"type="button" class="btn btn-outline-dark btn-sm mx-1">Update</button>
+                  <a href="/delete/{{todo.sno}}"type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+                </td>
+              </tr>
+              {% endfor %}  
+              {% endif %}  
+            </tbody>
+          </table>
+      </div> -->
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Indian Online Judiciary System</title>
+        <!-- <link rel="stylesheet" href="styles.css" /> -->
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css"
+          rel="stylesheet"
+        />
+    
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+        <style>
+          html, body {
+              overflow-x: hidden;
+          
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+header {
+  position: relative;
+  background-color: #91af4c;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5em;
+  position: relative;
+  z-index: 1;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 14px 20px;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #8e413e;
+}
+
+main {
+  padding: 120px 0 20px;
+}
+
+section {
+  padding: 60px 0;
+}
+
+section h2 {
+  color: #8e413e;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 420px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 150%;
+  object-fit: cover;
+}
+
+.hero-section {
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 100px 20px;
+  margin-top: 60px;
+}
+
+.hero-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+/* Services section */
+.services-section {
+  background-color: #fff;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.services-section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.services-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.service-item {
+  background-color: #8e413e;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 23%;
+  margin: 10px 0;
+  text-align: center;
+  transition: transform 0.3s;
+  text-decoration: none;
+}
+
+.service-item:hover {
+  transform: scale(1.05);
+}
+
+.service-item i {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+/* Style for modals */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Optional: Add animation for modal */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Apply animation to modal */
+.modal-content {
+  animation: modalFadeIn 0.3s;
+}
+
+.modal[style*="display: none;"] .modal-content {
+  animation: modalFadeOut 0.3s;
+}
+
+/* Form styling */
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form input,
+form textarea,
+form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+form textarea {
+  height: 100px;
+}
+
+form button {
+  background-color: #8e413e;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #8e413e;
+}
+
+.cases-section .cases-table-container {
+  overflow-x: auto;
+}
+
+.cases-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cases-section table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+.cases-section th,
+.cases-section td {
+  padding: 10px;
+  text-align: left;
+}
+
+.cases-section th {
+  background-color: #f2f2f2;
+}
+
+.contact-section form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-section form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.contact-section form input,
+.contact-section form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.contact-section form button {
+  background-color: #8e413e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-section form button:hover {
+  background-color: #8e413e;
+}
+
+/* Feedback Form Modal */
+#feedbackForm {
+  margin-top: 20px;
+}
+
+#feedbackForm label,
+#feedbackForm textarea,
+#feedbackForm button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#feedbackForm textarea {
+  height: 100px;
+}
+
+#feedbackForm button {
+  background-color: #8e413e;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#feedbackForm button:hover {
+  background-color: #8e413e;
+}
+
+/* Floating Feedback Button */
+#feedbackBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #8e413e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 1000;
+}
+
+#feedbackBtn:hover {
+  background-color: #8e413e;
+}
+
+footer {
+  background-color: #8e413e;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+/* Chatbot code */
+#chatbox {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 300px;
+            height: 400px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+        }
+
+        #chatbox-header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+
+        #chatbox-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        #chatbox-footer {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+
+        #message {
+            flex: 1;
+            border: none;
+            padding: 10px;
+            border-radius: 0 0 0 10px;
+            outline: none;
+        }
+
+        #send {
+            border: none;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 0 0 10px 0;
+        }
+
+        .message {
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .user-message {
+            background-color: #e0f7fa;
+            align-self: flex-end;
+        }
+
+        .bot-message {
+            background-color: #ffe0b2;
+            align-self: flex-start;
+        }
+      </style>
+      </head>
+      
+        <!-- <header>
+          <div class="container">
+            <h1>Indian Online Judiciary System</h1>
+            <nav>
+              <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#cases">Cases</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </header> -->
+        <!-- Chatbot UI -->
+<div id="chatbox">
+  <div id="chatbox-header">Chatbot</div>
+  <div id="chatbox-body"></div>
+  <div id="chatbox-footer">
+      <input type="text" id="message" placeholder="Type a message">
+      <button id="send">Send</button>
+  </div>
+</div>
+    
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="{{ url_for('static', filename='images/img11.jpg') }}" alt="Image 1" /></div>
+            <div class="swiper-slide"><img src="{{ url_for('static', filename='images/img22.jpg') }}" alt="Image 2" /></div>
+            <div class="swiper-slide"><img src="{{ url_for('static', filename='images/img33.jpg') }}" alt="Image 3" /></div>
+            <!-- Add more slides as needed -->
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+          <!-- Add Navigation -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+        
+    
+        <main>
+          <section id="home" class="hero-section">
+            <div class="container">
+              <h2>Welcome to the Online Judiciary System</h2>
+              <p>
+                Access judicial services and case information online. The Indian
+                judiciary is hindered by inefficiencies and delays due to manual
+                case management, physical court proceedings, and limited adoption of
+                technology. These issues lead to extended case backlogs, limited
+                access to legal services, especially in rural areas, and a lack of
+                transparency, which undermines public trust. Addressing these
+                challenges requires a strategic shift toward digital transformation
+                and technology-driven solutions to enhance efficiency,
+                accessibility, and accountability in the judicial system.
+              </p>
+            </div>
+          <section id="services" class="services-section">
+            <div class="container">
+              <h2>Our Services</h2>
+              <div class="services-list">
+                <a href="#caseFilingForm" class="service-item">
+                  <i class="fas fa-gavel"></i>
+                  <h3>Case Filing</h3>
+                  <p>Easily file your cases online with our secure system.</p>
+                </a>
+                <a href="#caseStatusForm" class="service-item">
+                  <i class="fas fa-balance-scale"></i>
+                  <h3>Case Status Tracking</h3>
+                  <p>Track the status of your cases in real-time.</p>
+                </a>
+                <a href="#legalResourcesForm" class="service-item">
+                  <i class="fas fa-book"></i>
+                  <h3>Legal Resources</h3>
+                  <p>Access a wide range of legal resources and documents.</p>
+                </a>
+                <a href="#onlineConsultationForm" class="service-item">
+                  <i class="fas fa-comments"></i>
+                  <h3>Online Consultation</h3>
+                  <p>Get online consultations with legal experts.</p>
+                </a>
+              </div>
+            </div>
+          </section>
+    
+          <div id="caseFilingForm" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Case Filing Form</h2>
+              <form id="caseFiling">
+                <label for="caseTitle">Case Title:</label>
+                <input type="text" id="caseTitle" name="caseTitle" required />
+                <label for="complainantName">Complainant Name:</label>
+                <input type="text" id="complainantName" name="complainantName" required />
+                <label for="respondentName">Respondent Name:</label>
+                <input type="text" id="respondentName" name="respondentName" required />
+                <label for="caseDetails">Case Details:</label>
+                <textarea id="caseDetails" name="caseDetails" rows="4" required></textarea>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+          
+          <div id="caseStatusForm" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Case Status Tracking Form</h2>
+              <form id="caseStatusTracking">
+                <label for="caseNumber">Case Number:</label>
+                <input type="text" id="caseNumber" name="caseNumber" required />
+                <button type="submit">Track</button>
+              </form>
+            </div>
+          </div>
+    
+          <div id="legalResourcesForm" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Legal Resources Form</h2>
+              <form id="legalResources">
+                <label for="resourceType">Resource Type:</label>
+                <input type="text" id="resourceType" name="resourceType" required />
+                <button type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+    
+          <div id="onlineConsultationForm" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Online Consultation Form</h2>
+              <form id="onlineConsultation">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required />
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+                <label for="query">Query:</label>
+                <textarea id="query" name="query" rows="4" required></textarea>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+
+
+<script>
+              document.addEventListener('DOMContentLoaded', () => {
+  const swiper = new Swiper('.swiper-container', {
+    loop: true,
+    autoplay: {
+      delay: 1500, // milliseconds
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+});
+document.getElementById('send').addEventListener('click', function() {
+            var message = document.getElementById('message').value;
+            document.getElementById('chatbox-body').innerHTML += `<div class="message user-message">${message}</div>`;
+            document.getElementById('message').value = '';
+
+            fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('chatbox-body').innerHTML += `<div class="message bot-message">${data.response}</div>`;
+                document.getElementById('chatbox-body').scrollTop = document.getElementById('chatbox-body').scrollHeight;
+            });
+        });
+
+        // Handle 'Enter' key press for sending message
+        document.getElementById('message').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('send').click();
+            }
+        });
+            </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    {% endblock body %}

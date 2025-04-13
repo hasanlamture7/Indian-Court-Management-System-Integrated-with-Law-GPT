@@ -1,0 +1,8 @@
+flask
+flask_sqlalchemy
+SQLAlchemy
+langchain
+transformers
+torch
+sentence-transformers
+pypdf

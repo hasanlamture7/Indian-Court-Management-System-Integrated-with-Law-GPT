@@ -1,0 +1,163 @@
+{% extends 'index.html' %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+
+<table class="table1">
+  <thead>
+    {% if law_table_2|length==0  %}
+    <div class="alert alert-dark" role="alert">
+      No Lawyers Listed!Please Enter Lawyer
+    </div>
+    {% else %}
+    <tr>
+      <th scope="col">SNo</th>
+      <th scope="col">Advocate Name</th>
+      <th scope="col">Advocate Id</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Advocate Type</th>
+      <th scope="col">Location</th>
+      <th scope="col">TOtal Cases</th>
+      <th scope="col">Won Cases</th>
+      
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for todo in law_table_2 %}
+    <tr>
+      <th scope="row">{{loop.index}}</th>
+        <td>{{todo.advocate_name}}</td>
+        <td>{{todo.advocate_id}}</td>
+        <td>{{todo.email}}</td>
+        <td>{{todo.phone}}</td>
+        <td>{{todo.advocate_type}}</td>
+        <td>{{todo.location}}</td>
+        <td>{{todo.total_cases}}</td>
+        <td>{{todo.won_cases}}</td>
+      
+      <td>
+        <!-- <a href="/update/{{todo.sno}}"type="button" class="btn btn-outline-dark btn-sm mx-1">Update</button> -->
+        <a href="/delete_law/{{todo.sno_2}}"type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+      </td>
+    </tr>
+    {% endfor %}  
+    {% endif %}  
+  </tbody>
+</table>
+</div>
+<style>
+.table1 {
+width: 100%;
+margin-top: 20px;
+border-collapse: collapse;
+}
+
+/* Table header styling */
+header {
+position: relative;
+background-color: #91af4c;
+color: white;
+padding: 20px 0;
+text-align: center;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 1000;
+}
+
+header .container {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+header h1 {
+margin: 0;
+font-size: 1.5em;
+position: relative;
+z-index: 1;
+}
+
+nav ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+display: flex;
+}
+
+nav ul li {
+margin: 0 15px;
+}
+
+nav ul li a {
+color: white;
+text-decoration: none;
+padding: 14px 20px;
+display: block;
+transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+background-color: #8e413e;
+}
+.table1 thead th {
+background-color: #343a40;
+color: white;
+text-align: center;
+padding: 10px;
+border-bottom: 1px solid #ddd;
+}
+
+/* Table row styling */
+.table1 tbody tr:nth-child(even) {
+background-color: #f2f2f2;
+}
+
+.table1 tbody tr:hover {
+background-color: #ddd;
+}
+
+/* Table cell styling */
+.table1 th, .table1 td {
+padding: 12px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+.table1 thead {
+    display: none;
+}
+
+.table1, .table1 tbody, .table1 tr, .table1 td {
+    display: block;
+    width: 100%;
+}
+
+.table1 tr {
+    margin-bottom: 15px;
+}
+
+.table1 td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+}
+
+.table1 td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+}
+}
+
+      </style>
+{% endblock body %}
+   
